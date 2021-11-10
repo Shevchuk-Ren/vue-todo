@@ -1,12 +1,13 @@
 <template>
   <div>
-     <form  autoComplete="off">
+     <form autoComplete="off"  @submit.prevent="submitForm">
         <label >
-          Email
+          Login
           <input
-            type="email"
-            name="email"
-             value=""
+            v-model.trim="login"
+            type="text"
+           
+             name="text"
          
           />
         </label>
@@ -14,9 +15,10 @@
         <label>
           Password
           <input
+            v-model.trim="password"
             type="password"
+        
             name="password"
-            value=""
             
           />
         </label>
@@ -30,26 +32,30 @@
 
 export default {
   name: 'Form',
-//   emits: ['add-todo'],
+  emits: ['check-login'],
   data() {
     return {
-      title: ''
+      password: '',
+      login: ''
     }
   },
-//   methods: {
-//     addTodo() {
+  methods: {
+    submitForm() {
   
   
-//       const newTodoObj = {
-//         id: uuidv4(),
-//         title: this.title,
-//         completed: false,
-//         editable: false
-//       }
-//       this.$emit('add-todo', newTodoObj);
-//       this.title = '';
-//     }
-//   }
+      const newTodoObj = {
+        password: this.password,
+        login: this.login,
+        completed: false
+       
+      }
+      this.$emit('check-login', newTodoObj);
+      this.login = '';
+       this.password = '';
+
+ 
+    }
+  }
 }
 </script>
 <style scoped>

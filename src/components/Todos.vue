@@ -3,7 +3,7 @@
     <h2>Thank you {name}!</h2>
      <ul>
       <li v-for="todo in todos" :key="todo.id" >
-        <Todo :todo="todo" v-on:edit="toggleHeader($event)"  @delete-todo="$emit('delete-todo', todo.id)"/>
+        <Todo :todo="todo" @edit="toggleHeader($event)"  @delete-todo="$emit('delete-todo', todo.id)"/>
       </li>
 
     
@@ -27,12 +27,11 @@ export default {
   
     }
    },
-   emits: ['delete-todo'],
+   emits: ['delete-todo', 'new-obj'],
    methods: {
      toggleHeader(newTodoObj) {
-console.log(newTodoObj, `todos header`)
-console.log(this.todos, `this todos`);
-this.$emit('newObj', newTodoObj)
+
+this.$emit('new-obj', newTodoObj)
      }
    }
   

@@ -8,14 +8,8 @@
               <input type="checkbox" @click="markComplete(todo)" >
               <label v-show="!todo.editable" 
               :class="todo.completed ? 'taskitem' : 'text'">{{todo.title}}</label>
-              <!-- <input v-show="todo.editable" v-model="todo.title"  type="text" class="editor" 
-               
-              /> -->
-                <input v-show="todo.editable"  :value="todo.title" @change="showTodoTitle($event)"   type="text" class="editor" 
-               
-              />
-          
-             
+           
+                <input v-show="todo.editable"  :value="todo.title" type="text"   class="editor" @change="showTodoTitle($event)" />
               <button  type="edit" @click="editTodo(todo)">{{todo.editable? 'Edited': 'Edit'}}</button>
              <button @click="$emit('delete-todo', todo.id)">Delete</button>
             </div>
@@ -38,12 +32,8 @@ type: String,
     }
 
   },
-   emits: ['delete-todo'],
-data() {
-    return {
-      title: ''
-    }
-  },
+   emits: ['delete-todo', 'edit'],
+
 
     methods: {
     markComplete(todo) {
@@ -52,7 +42,7 @@ data() {
 
     },
     editTodo(todo) {
-      console.log(this.title, `djh` )
+ 
       if(todo.editable) {
         todo.editable = false
         
@@ -75,11 +65,11 @@ data() {
         completed: false,
         editable: true
       };
-      console.log(newTodoObj, `obj`)
+   
   
       this.$emit('edit', newTodoObj);
     },
-  },
+ },
 }
 </script>
 <style scoped>

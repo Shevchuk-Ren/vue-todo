@@ -3,9 +3,9 @@
   <div id="app">
       <img class="logo" alt="Vue logo" src="./assets/logo.png">
     <div class="container">
-      <Form/>
+      <Form  @check-login="checkLogin"/>
         <AddTodo @add-todo="addTodo"/>
-       <Todos :todos="todos" @delete-todo="deleteTodo" v-on:newObj="editTodo($event)"/>
+       <Todos :todos="todos" @delete-todo="deleteTodo" @new-obj="editTodo($event)"/>
 
     </div>
 
@@ -60,6 +60,12 @@ export default {
           editable: false
         }
       ],
+      contacts: [
+       { 
+        login: 'Admin',
+        password: '12345',
+       }
+      ],
     }
   },
   methods: {
@@ -79,16 +85,27 @@ export default {
       this.todos = this.todos.filter(todo => todo.id !== todoId);
     },
        editTodo(newTodoObj) {
-         console.log(newTodoObj, `Я ЖОШЕЛ`)
+      
           this.todos.filter((todo) => {
            if(todo.id === newTodoObj.id) {
              todo.title = newTodoObj.title;
-             return todo
+             return todo;
              
            }
          });
           this.todos = [...this.todos];
      
+    },
+    checkLogin(newTodoObj) {
+
+          const checkContact = this.contacts.filter(contact => contact.login === newTodoObj.login && contact.password === newTodoObj.password)
+   
+       if(checkContact.length !== 0){
+   alert(`Hello, ${newTodoObj.login}`);
+       return;
+       }
+     alert(`Try again`);
+  
     }
   }
 }
