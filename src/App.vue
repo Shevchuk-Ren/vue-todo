@@ -1,13 +1,12 @@
 
-
-
 <template>
   <div id="app">
       <img class="logo" alt="Vue logo" src="./assets/logo.png">
     <div class="container">
       
           <AddTodo v-on:add-todo="addTodo"/>
-      <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"></Todos>
+       <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
+
     </div>
 
     
@@ -17,6 +16,7 @@
 <script>
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+
 export default {
   name: 'app',
   components: {
@@ -47,7 +47,7 @@ export default {
           completed: false
         },
         {
-          i: 5,
+          id: 5,
           title: 'Finish work',
           completed: false
         }
@@ -60,14 +60,18 @@ export default {
     },
      deleteTodo(todoId) {
       this.todos = this.todos.filter(todo => todo.id !== todoId);
+    },
+       editTodo(todoId) {
+         console.log(todoId, `feoioihuih`)
+     
     }
   }
 }
 </script>
 <style>
 body {
-      margin: 0;
-            padding: 0;
+   margin: 0;
+   padding: 0;
    background: linear-gradient(180deg, #00AFED 0%, #00569A 100%);
 }
 .container {

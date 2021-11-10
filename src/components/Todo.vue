@@ -1,7 +1,7 @@
 <template>
-  <div  v-bind:class="{ 'completed': todo.completed }">
-      <p v-on:click="markComplete">{{ todo.title }}</p>
-       <button @click="$emit('delete-todo', todo.id)">Delete</button>
+   <div v-bind:class="{ 'completed': todo.completed }">
+    <p v-on:click="markComplete(todo)">{{ todo.title }}</p>
+    <button @click="$emit('delete-todo', todo.id)">Delete</button>
   </div>
 </template>
 <script>
@@ -11,12 +11,12 @@ export default {
     "todo"
   ],
     methods: {
-    markComplete() {
-      this.todo.completed = !this.todo.completed
-    },
-    deleteTodo() {
-            this.$emit('delete-todo', todo.id);
+    markComplete(todo) {
+      console.log(this.todo, `this`)
+      todo.completed = !todo.completed
+
     }
+
   },
 }
 </script>
