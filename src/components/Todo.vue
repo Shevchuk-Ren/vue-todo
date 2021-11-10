@@ -1,8 +1,22 @@
 <template>
-   <div :class="{ 'completed': todo.completed }">
+   <!-- <div :class="{ 'completed': todo.completed }">
     <p @click="markComplete(todo)">{{ todo.title }}</p>
     <button @click="$emit('delete-todo', todo.id)">Delete</button>
-  </div>
+  </div> -->
+
+   <div :class="{ 'completed': todo.completed }">
+              <input type="checkbox" @click="markComplete(todo)" >
+              <label v-show="!todo.editable" 
+              :class="todo.completed ? 'taskitem' : 'text'">{{todo.title}}</label>
+              <input type="text" class="editor" v-model="todo.title"
+               v-show="todo.editable"
+               @on-blur="editTodoed(todo)"/>
+          
+             
+              <button  type="edit" @click="editTodo(todo)">{{todo.editable? 'Edited': 'Edit'}}</button>
+             <button @click="$emit('delete-todo', todo.id)">Delete</button>
+            </div>
+
 </template>
 <script>
 export default {
@@ -21,12 +35,26 @@ export default {
   
     }
   },
+   emits: ['delete-todo'],
     methods: {
     markComplete(todo) {
       console.log(this.todo, `this`)
       todo.completed = !todo.completed
 
+    },
+    editTodo(todo) {
+      console.log(todo.editable )
+      if(todo.editable) {
+        todo.editable = false
+        return;
+      }
+      todo.editable = true
+    },
+         editTodoed(todo) {
+         console.log(todo, `done edit`)
+      todo.editable = false
     }
+
 
   },
 }
@@ -35,4 +63,13 @@ export default {
     .completed {
     text-decoration: line-through;
   }
+  
+.text {
+  font-size: 16px;
+}
+.taskitem {
+  color: #8f8f8f;
+  font-size: 16px;
+  text-decoration: line-through;
+}
 </style>

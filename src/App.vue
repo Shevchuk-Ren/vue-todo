@@ -23,33 +23,39 @@ export default {
     Todos,
     AddTodo
   },
+   
   data() {
     return {
       todos: [
         {
           id: 1,
           title: 'Go workout',
-          completed: false
+          completed: false,
+          editable: false
         },
         {
           id: 2,
           title: 'Do laundry',
-          completed: false
+          completed: false,
+          editable: false
         },
         {
           id: 3,
           title: 'Cook food',
-          completed: false
+          completed: false,
+          editable: false,
         },
         {
           id: 4,
           title: 'Clean up room',
-          completed: false
+          completed: false,
+          editable: false
         },
         {
           id: 5,
           title: 'Finish work',
-          completed: false
+          completed: false,
+          editable: false
         }
       ],
     }
