@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit="addTodo">
-      <input type="text" v-model="title" name="title">
+      <input v-model="title" type="text"  name="title">
       <button type="submit">Add</button>
     </form>
   </div>
@@ -19,7 +19,7 @@ export default {
   methods: {
     addTodo(e) {
       e.preventDefault();
-     console.log(this.title, `add todo`)
+  
       const newTodoObj = {
         id: uuidv4(),
         title: this.title,

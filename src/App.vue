@@ -4,8 +4,8 @@
       <img class="logo" alt="Vue logo" src="./assets/logo.png">
     <div class="container">
       
-        <AddTodo v-on:add-todo="addTodo"/>
-       <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
+        <AddTodo @add-todo="addTodo"/>
+       <Todos :todos="todos" @delete-todo="deleteTodo"/>
 
     </div>
 
@@ -18,7 +18,7 @@ import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Todos,
     AddTodo
@@ -85,16 +85,16 @@ body {
 }
 .container {
 
-  margin: 0 auto;
-  position: relative;
-width: 1191px;
+ margin: 0 auto;
+ position: relative;
+ width: 1191px;
 /* height: 660px; */
 
 /* top: 250px; */
-margin: 0 auto;
-background-color: white;
+ margin: 0 auto;
+ background-color: white;
 
-border: 1px solid black;
+ border: 1px solid black;
  
 }
 

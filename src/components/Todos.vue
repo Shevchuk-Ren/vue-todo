@@ -2,8 +2,8 @@
   <div>
     <h2>My todolist</h2>
      <ul>
-      <li v-bind:key="todo.id" v-for="todo in todos">
-        <Todo v-bind:todo="todo" v-on:delete-todo="$emit('delete-todo', todo.id)"/>
+      <li v-for="todo in todos" :key="todo.id" >
+        <Todo :todo="todo" @delete-todo="$emit('delete-todo', todo.id)"/>
       </li>
 
     
@@ -18,9 +18,18 @@ export default {
   components: {
     Todo
   },
-   props: [
-    "todos"
-  ]
+   props: {
+      todos: {
+      type: Object,
+        
+      default: () => {
+        const obj = {id: 1231, title: "no todo"}
+        return obj;
+      }
+  
+    }
+   }
+  
 }
 
 // export default {
