@@ -56,10 +56,10 @@ export default {
   },
   methods: {
     addTodo(newTodoObj) {
-      console.log(this.todos)
-      const a = this.todos.filter(todo => todo.title === newTodoObj.title)
-       console.log(a, `a`)
-       if(a.length !== 0){
+    
+      const checkTodo = this.todos.filter(todo => todo.title === newTodoObj.title)
+   
+       if(checkTodo.length !== 0){
          alert('This todo has been declareted');
        return;
        }
