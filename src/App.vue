@@ -4,7 +4,7 @@
       <img class="logo" alt="Vue logo" src="./assets/logo.png">
     <div class="container">
       
-          <AddTodo v-on:add-todo="addTodo"/>
+        <AddTodo v-on:add-todo="addTodo"/>
        <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
 
     </div>
