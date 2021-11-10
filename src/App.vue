@@ -3,9 +3,9 @@
   <div id="app">
       <img class="logo" alt="Vue logo" src="./assets/logo.png">
     <div class="container">
-      
+      <Form/>
         <AddTodo @add-todo="addTodo"/>
-       <Todos :todos="todos" @delete-todo="deleteTodo"/>
+       <Todos :todos="todos" @delete-todo="deleteTodo" v-on:newObj="editTodo($event)"/>
 
     </div>
 
@@ -16,12 +16,14 @@
 <script>
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import Form from './components/Form.vue'
 
 export default {
   name: 'App',
   components: {
     Todos,
-    AddTodo
+    AddTodo,
+    Form
   },
    
   data() {
@@ -76,8 +78,16 @@ export default {
      deleteTodo(todoId) {
       this.todos = this.todos.filter(todo => todo.id !== todoId);
     },
-       editTodo(todoId) {
-         console.log(todoId, `feoioihuih`)
+       editTodo(newTodoObj) {
+         console.log(newTodoObj, `Я ЖОШЕЛ`)
+          this.todos.filter((todo) => {
+           if(todo.id === newTodoObj.id) {
+             todo.title = newTodoObj.title;
+             return todo
+             
+           }
+         });
+          this.todos = [...this.todos];
      
     }
   }
@@ -102,6 +112,22 @@ body {
 
  border: 1px solid black;
  
+}
+.logo {
+  display: block;
+  margin: 20px auto;
+ width: 186px;
+height: 119px;
+}
+.general {
+  /* height: 80%; */
+  /* height: 797px; */
+  position: absolute;
+}
+.footer {
+    background: #E5E5E5;
+    height: 283px;
+    /* height: 20%; */
 }
 
 </style>
