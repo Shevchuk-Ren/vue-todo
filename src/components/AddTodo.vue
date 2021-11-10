@@ -19,7 +19,7 @@ export default {
   methods: {
     addTodo(e) {
       e.preventDefault();
-    
+     console.log(this.title, `add todo`)
       const newTodoObj = {
         id: uuidv4(),
         title: this.title,

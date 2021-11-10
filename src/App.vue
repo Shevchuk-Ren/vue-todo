@@ -56,6 +56,15 @@ export default {
   },
   methods: {
     addTodo(newTodoObj) {
+      console.log(this.todos)
+      const a = this.todos.filter(todo => todo.title === newTodoObj.title)
+       console.log(a, `a`)
+       if(a.length !== 0){
+         alert('This todo has been declareted');
+       return;
+       }
+       
+
       this.todos = [...this.todos, newTodoObj];
     },
      deleteTodo(todoId) {
