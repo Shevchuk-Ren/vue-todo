@@ -1,150 +1,337 @@
-
 <template>
-  <div id="app">
-      <img class="logo" alt="Vue logo" src="./assets/logo.png">
-    <div class="container">
-      <Form  @check-login="checkLogin"/>
-        <AddTodo @add-todo="addTodo"/>
-       <Todos :todos="todos" @delete-todo="deleteTodo" @new-obj="editTodo($event)"/>
-
-    </div>
-
-    
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
   </div>
+  <router-view/>
 </template>
 
-<script>
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import Form from './components/Form.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Todos,
-    AddTodo,
-    Form
-  },
-   
-  data() {
-    return {
-      todos: [
-        {
-          id: 1,
-          title: 'Go workout',
-          completed: false,
-          editable: false
-        },
-        {
-          id: 2,
-          title: 'Do laundry',
-          completed: false,
-          editable: false
-        },
-        {
-          id: 3,
-          title: 'Cook food',
-          completed: false,
-          editable: false,
-        },
-        {
-          id: 4,
-          title: 'Clean up room',
-          completed: false,
-          editable: false
-        },
-        {
-          id: 5,
-          title: 'Finish work',
-          completed: false,
-          editable: false
-        }
-      ],
-      contacts: [
-       { 
-        login: 'Admin',
-        password: '12345',
-       }
-      ],
-    }
-  },
-  methods: {
-    addTodo(newTodoObj) {
-    
-      const checkTodo = this.todos.filter(todo => todo.title === newTodoObj.title)
-   
-       if(checkTodo.length !== 0){
-         alert('This todo has been declareted');
-       return;
-       }
-       
-
-      this.todos = [...this.todos, newTodoObj];
-    },
-     deleteTodo(todoId) {
-      this.todos = this.todos.filter(todo => todo.id !== todoId);
-    },
-       editTodo(newTodoObj) {
-      
-          this.todos.filter((todo) => {
-           if(todo.id === newTodoObj.id) {
-             todo.title = newTodoObj.title;
-             return todo;
-             
-           }
-         });
-          this.todos = [...this.todos];
-     
-    },
-    checkLogin(newTodoObj) {
-
-          const checkContact = this.contacts.filter(contact => contact.login === newTodoObj.login && contact.password === newTodoObj.password)
-   
-       if(checkContact.length !== 0){
-   alert(`Hello, ${newTodoObj.login}`);
-       return;
-       }
-     alert(`Try again`);
-  
-    }
-  }
-}
-</script>
 <style>
+/* #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+} */
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+Use a more readable tab size (opinionated).
+*/
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+/**
+1. Correct the line height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+*/
+
+
+
+/*
+Sections
+========
+*/
+
+/**
+Remove the margin in all browsers.
+*/
+
 body {
-   margin: 0;
-   padding: 0;
-   background: linear-gradient(180deg, #00AFED 0%, #00569A 100%);
+  margin: 0;
+  padding: 0;
 }
-.container {
 
- margin: 0 auto;
- position: relative;
- width: 1191px;
-/* height: 660px; */
+/**
+Remove the list in all browsers.
+*/
 
-/* top: 250px; */
- margin: 0 auto;
- background-color: white;
-
- border: 1px solid black;
- 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.logo {
+
+/**
+Remove the margin in all browsers.
+*/
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+img {
   display: block;
-  margin: 20px auto;
- width: 186px;
-height: 119px;
-}
-.general {
-  /* height: 80%; */
-  /* height: 797px; */
-  position: absolute;
-}
-.footer {
-    background: #E5E5E5;
-    height: 283px;
-    /* height: 20%; */
+  max-width: 100%;
+  height: auto;
 }
 
+/**
+Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+*/
+
+body {
+  font-family: system-ui, -apple-system,
+    /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+/*
+Grouping content
+================
+*/
+
+/**
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+}
+
+/*
+Text-level semantics
+====================
+*/
+
+/**
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr[title] {
+  text-decoration: underline dotted;
+}
+
+/**
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+
+/**
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+}
+
+/*
+Forms
+=====
+*/
+
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+Normalize li item
+*/
+
+li {
+  font-style: normal;
+}
+
+/**
+Remove the inheritance of text transform in Edge and Firefox.
+1. Remove the inheritance of text transform in Firefox.
+*/
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+/**
+Remove the inner border and padding in Firefox.
+*/
+
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+Restore the focus styles unset by the previous rule.
+*/
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+Remove the additional ':invalid' styles in Firefox.
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+
+legend {
+  padding: 0;
+}
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Add the correct link without decoration
+*/
+
+a {
+  text-decoration: none;
+}
 </style>
