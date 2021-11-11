@@ -7,6 +7,10 @@
 </template>
 
 <style>
+#nav {
+  background: #333333;
+  height: 53px;
+}
 #app {
 font-family: 'Roboto', sans-serif;
 font-weight: normal;
@@ -14,6 +18,7 @@ font-weight: normal;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   /* color: #2c3e50; */
+
 }
 html {
   box-sizing: border-box;

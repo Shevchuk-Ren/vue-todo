@@ -79,7 +79,7 @@ export default {
 <style scoped>
 .wrapper-form {
   position: absolute;
-  bottom: 35%;
+  bottom: 30%;
   right: 0;
   max-width: 481px;
   box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
@@ -128,23 +128,22 @@ border: 1px solid #0076C0;
 }
 .form-btn {
   width: 100%;
-  font-family: Roboto;
+
 font-style: normal;
 font-weight: normal;
 font-size: 25px;
 line-height: 29px;
-display: block;
-align-items: center;
-text-align: center;
+padding: 10px 0;
+margin-bottom: 20px;
 color: #FFFFFF;
 background: #0076C0;
-/* margin-top: 40px; */
-margin-bottom: 20px;
+border: 1px solid #0076C0;
+
 }
 .form-btn:hover {
  
    color: #0076C0;
-    border: 2px solid #0076C0;
+    border: 1px solid #0076C0;
   background-color: #FFFFFF;
 
 }
