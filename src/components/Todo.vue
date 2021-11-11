@@ -10,8 +10,8 @@
               :class="todo.completed ? 'taskitem' : 'text'">{{todo.title}}</label>
            
                 <input v-show="todo.editable"  :value="todo.title" type="text"   class="editor" @change="showTodoTitle($event)" />
-              <button  type="edit" @click="editTodo(todo)">{{todo.editable? 'Edited': 'Edit'}}</button>
-             <button @click="$emit('delete-todo', todo.id)">Delete</button>
+              <button  type="edit" @click="editTodo(todo)" class="todo-edit">{{todo.editable? 'Edited': 'Edit'}}</button>
+             <button @click="$emit('delete-todo', todo.id)" class="todo-delete">Delete</button>
             </div>
 
 </template>
@@ -84,5 +84,18 @@ type: String,
   color: #8f8f8f;
   font-size: 16px;
   text-decoration: line-through;
+}
+.todo-delete, .todo-edit {
+
+/* 
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 29px;
+padding: 10px; */
+
+color: #FFFFFF;
+background: #0076C0;
+border: 1px solid #0076C0;
 }
 </style>

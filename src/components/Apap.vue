@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <!-- <div id="app"> -->
       <!-- <img class="logo" alt="Vue logo" src="../"> -->
     <div class="container">
       <!-- <Form  @check-login="checkLogin"/> -->
@@ -9,19 +9,19 @@
     </div>
 
     
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
 import Todos from './Todos';
 import AddTodo from './AddTodo';
-import Form from './Form.vue'
+
 export default {
   name: 'App',
   components: {
     Todos,
     AddTodo,
-    Form
+
   },
    
   data() {
