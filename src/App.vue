@@ -7,13 +7,14 @@
 </template>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+#app {
+font-family: 'Roboto', sans-serif;
+font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-} */
+  /* text-align: center; */
+  /* color: #2c3e50; */
+}
 html {
   box-sizing: border-box;
 }

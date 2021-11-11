@@ -1,7 +1,14 @@
 <template>
   <div class="wrapper-form">
      <form class="form" autoComplete="off"  @submit.prevent="submitForm">
-        <label >
+       <!-- <div class="form-field"> -->
+         <label for="name" class="form-label">Имя</label>
+<input     v-model.trim="login"
+            type="text"
+           
+             name="text"
+         class="form-input" id="name"/>
+        <!-- <label class="form-label">
           Name
           <input
             v-model.trim="login"
@@ -10,19 +17,27 @@
              name="text"
          class="form-input"
           />
-        </label>
 
-        <label>
-          Password
-          <input
+        </label> -->
+       <!-- </div> -->
+<!-- <div class="form-field"> -->
+           <label for="password" class="form-label">Имя</label>
+<input     v-model.trim="password"
+            type="password"
+        
+            name="password"
+             class="form-input" id="password"/>
+        <!-- <label class="form-label">
+          Password -->
+          <!-- <input
             v-model.trim="password"
             type="password"
         
             name="password"
              class="form-input"
           />
-        </label>
-
+        </label> -->
+<!-- </div> -->
         <button class="form-btn" type="submit">LOGIN</button>
      <a class="form-repeat" href="">Forgot Password</a>
     
@@ -71,8 +86,21 @@ export default {
 .form {
  color: #333333;
 background-color: coral;
-  padding: 0 30px;
+  padding: 40px 30px 23px 30px;
   background: #FFFFFF;
+
+}
+.form-field {
+  width: 100%;
+margin-bottom: 40px;
+}
+.form-label {
+
+  font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 21px;
+color: #333333;
 
 }
 .form-input {
@@ -84,6 +112,7 @@ background-color: coral;
   width: 100%;
   height: 53px;
   /* padding: 12px 42px; */
+  margin-bottom: 40px;
   margin-top: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
@@ -102,7 +131,7 @@ align-items: center;
 text-align: center;
 color: #FFFFFF;
 background: #0076C0;
-margin-top: 40px;
+/* margin-top: 40px; */
 margin-bottom: 20px;
 }
 .form-btn:hover {
@@ -143,7 +172,7 @@ line-height: 23px;
 display: block;
 align-items: center;
 text-align: center;
-margin-bottom: 23px;
+
 color: #056DAE;
 }
 </style>
