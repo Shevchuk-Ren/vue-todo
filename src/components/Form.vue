@@ -2,12 +2,11 @@
   <div class="wrapper-form">
      <form class="form" autoComplete="off"  @submit.prevent="submitForm">
        <!-- <div class="form-field"> -->
-         <label for="name" class="form-label">Имя</label>
-<input     v-model.trim="login"
+         <label for="name" class="form-label">Name</label>
+<input   id="name"  v-model.trim="login"
             type="text"
-           
              name="text"
-         class="form-input" id="name"/>
+         class="form-input"  placeholder="Company name"/>
         <!-- <label class="form-label">
           Name
           <input
@@ -21,12 +20,11 @@
         </label> -->
        <!-- </div> -->
 <!-- <div class="form-field"> -->
-           <label for="password" class="form-label">Имя</label>
-<input     v-model.trim="password"
+           <label for="password" class="form-label">Password</label>
+<input   id="password"  v-model.trim="password"
             type="password"
-        
             name="password"
-             class="form-input" id="password"/>
+             class="form-input"  placeholder="Password"/>
         <!-- <label class="form-label">
           Password -->
           <!-- <input
@@ -80,6 +78,9 @@ export default {
 </script>
 <style scoped>
 .wrapper-form {
+  position: absolute;
+  bottom: 35%;
+  right: 0;
   max-width: 481px;
   box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
 }
@@ -104,21 +105,27 @@ color: #333333;
 
 }
 .form-input {
-   font-family: inherit;
-  /* font-size: 14px;
-  line-height: 1.714;
-  letter-spacing: 0.03em;
-  color: $primary-text-color; */
+font-size: 18px;
+line-height: 21px;
+outline:none;
+
+color: #333333;
   width: 100%;
   height: 53px;
-  /* padding: 12px 42px; */
+  padding: 16px 15px;
   margin-bottom: 40px;
   margin-top: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   /* transition: border $timing-fm; */
 }
+ .form-input:hover {
+border: 1px solid #0076C0;
+}
 
+.form-input:focus {
+    border: 1px solid #101010;
+}
 .form-btn {
   width: 100%;
   font-family: Roboto;

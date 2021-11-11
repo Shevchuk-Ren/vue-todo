@@ -1,7 +1,9 @@
 <template>
 
   <div class="container">
-      <h1 class="hero-title">Welcome to Business Analytics Online</h1>
+    <div class="wrapper-title">
+      <h1 class="hero-title">Welcome to<br/> Business Analytics Online</h1>
+      </div>
     </div>
 
 </template>
@@ -15,12 +17,24 @@ export default {
 </script>
 
 <style scoped>
+.wrapper-title {
+ position: absolute;
+ bottom: 40px;
+
+  padding: 70px 0;
+
+max-width: 629px;
+}
 .hero {
   background-image: url(../assets/hero.jpg);
   max-width: 100%;
   height: 456px;
 }
 .hero-title {
+    font-style: normal;
+font-weight: normal;
+font-size: 55px;
+line-height: 156.69%;
     color: #FFFFFF;
 }
 </style>

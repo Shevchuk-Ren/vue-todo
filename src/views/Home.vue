@@ -107,6 +107,7 @@ export default {
   height: 456px;
 }
 .wrapper {
+  position: relative;
   display: flex;
   padding-top: 40px;
 }
