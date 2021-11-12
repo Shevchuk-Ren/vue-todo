@@ -45,7 +45,7 @@ export default {
 
   methods: {
     markComplete(todo) {
-      console.log(this.todo, `this`);
+   
       todo.completed = !todo.completed;
     },
     editTodo(todo) {
