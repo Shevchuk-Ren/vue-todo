@@ -1,35 +1,40 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> 
-    <router-link class="invisible"  to="/todo">Todos</router-link>
+    <router-link to="/">Home</router-link>
+    <router-link class="invisible" :class="isActive && 'visible'" to="/todo"
+      >Todos</router-link
+    >
   </div>
-  <router-view/>
+  <router-view />
 </template>
 <script>
-
-
-
 export default {
-
   name: 'App',
-   data() {
+  data() {
     return {
-   
       isActive: false,
-    
-    }
+    };
   },
-  mounted: function () {
-  this.$nextTick(function () {
-let account_key = localStorage.getItem('isActive');
-console.log(account_key, `accaunt`)
-  })
-},
-  methods: {
-
-  }
-  
-}
+  mounted() {
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been rendered
+      const isLogin = localStorage.getItem('isActive');
+      if (isLogin) console.log(localStorage.getItem('isActive'), `Hello World`);
+      this.isActive = isLogin;
+    });
+  },
+  updated() {
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been re-rendered
+      const isLogin = localStorage.getItem('isActive');
+      if (isLogin) console.log(localStorage.getItem('isActive'), `Hello World`);
+      this.isActive = isLogin;
+    });
+  },
+  methods: {},
+};
 </script>
 <style>
 #nav {
@@ -37,13 +42,12 @@ console.log(account_key, `accaunt`)
   height: 53px;
 }
 #app {
-font-family: 'Roboto', sans-serif;
-font-weight: normal;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   /* color: #2c3e50; */
-
 }
 html {
   box-sizing: border-box;
@@ -67,8 +71,6 @@ Use a more readable tab size (opinionated).
 1. Correct the line height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
 */
-
-
 
 /*
 Sections
@@ -368,6 +370,8 @@ a {
 
 .invisible {
   display: none;
-
+}
+.visible {
+  display: block;
 }
 </style>
