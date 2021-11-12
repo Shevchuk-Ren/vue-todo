@@ -1,44 +1,22 @@
 <template>
   <div class="wrapper-form">
      <form class="form" autoComplete="off"  @submit.prevent="submitForm">
-       <!-- <div class="form-field"> -->
-         <label for="name" class="form-label">Name</label>
+
+         <label for="name" class="form-label" >Name</label>
 <input   id="name"  v-model.trim="login"
             type="text"
              name="text"
-         class="form-input"  placeholder="Company name"/>
-        <!-- <label class="form-label">
-          Name
-          <input
-            v-model.trim="login"
-            type="text"
-           
-             name="text"
-         class="form-input"
-          />
-
-        </label> -->
-       <!-- </div> -->
-<!-- <div class="form-field"> -->
+         class="form-input" :class="isName && 'border' "  placeholder="Company name"/>
+   
            <label for="password" class="form-label">Password</label>
 <input   id="password"  v-model.trim="password"
             type="password"
             name="password"
-             class="form-input"  placeholder="Password"/>
-        <!-- <label class="form-label">
-          Password -->
-          <!-- <input
-            v-model.trim="password"
-            type="password"
-        
-            name="password"
-             class="form-input"
-          />
-        </label> -->
-<!-- </div> -->
+             class="form-input" :class="isPassword && 'border' " placeholder="Password"/>
+
         <button class="form-btn" type="submit">LOGIN</button>
      <a class="form-repeat" href="">Forgot Password</a>
-    
+    <!-- <div class="invisible"  :class="isPassword && 'todo-error'" >Я тут</div> -->
       </form>
        <div class="form-register">
        <a class="form-text" href="">Register now</a>
@@ -54,17 +32,29 @@ export default {
   data() {
     return {
       password: '',
-      login: ''
+      login: '',
+      isActive: false,
+      width: '40px',
+      isPassword: false,
+      isName: false,
     }
   },
+  
   methods: {
     submitForm() {
-  
+  if(this.password === "" ) {
+     this.isPassword= true;
+ 
+    return;
+  } else if( this.login === "") {
+    this.isName = true;
+    return;
+  }
   
       const newTodoObj = {
         password: this.password,
         login: this.login,
-        completed: false
+        isActive: this.isActive
        
       }
       this.$emit('check-login', newTodoObj);
@@ -86,7 +76,7 @@ export default {
 }
 .form {
  color: #333333;
-background-color: coral;
+
   padding: 40px 30px 23px 30px;
   background: #FFFFFF;
 
@@ -181,4 +171,17 @@ text-align: center;
 
 color: #056DAE;
 }
+.border {
+   position: relative;
+  border: 1px solid #D60000;
+}
+/* .invisible {
+  display: none;
+}
+.todo-error {
+ display: block;
+ position: absolute;
+ top: 0;
+ 
+} */
 </style>

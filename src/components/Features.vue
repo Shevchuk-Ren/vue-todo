@@ -9,30 +9,53 @@
     <ul>
 
       <li class="about-item">
-        <h3 class="about-title">
+          <div class="features__thumb">
+                      <svg class="features-icon" width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.9584 0L23 2.99416L8.77173 17L0 8.36558L3.04162 5.37142L8.77173 11.0118L19.9584 0Z" fill="#0076C0"/>
+            </svg>
+    </div>
+      <div class="about-thumb">
+
+          <h3 class="about-title">
     Interactive Reporting
-        </h3>
+        </h3> 
         <p class="about-description">
 In just a few clicks, you can connect your data from 1C, CRM (Bitrix24, AmoCRM, ZohoCRM), E-commerce (PROM.UA, Rozetka, ebay), Logistic (Nova Poshta), Google Analytics and many more systems that reflect different aspects of business activities.
         </p>
+      </div>
+          
       </li >
 
           <li class="about-item">
+                <div class="features__thumb">
+                      <svg class="features-icon" width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.9584 0L23 2.99416L8.77173 17L0 8.36558L3.04162 5.37142L8.77173 11.0118L19.9584 0Z" fill="#0076C0"/>
+            </svg>
+    </div>
+ <div class="about-thumb">
         <h3 class="about-title">
     Automated data updates
         </h3>
         <p class="about-description">
           The application automatically updates and structures the data in just 60 seconds, saving you time and money.
         </p>
+ </div>
       </li>
 
           <li class="about-item">
+                <div class="features__thumb">
+                      <svg class="features-icon" width="23" height="17" viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.9584 0L23 2.99416L8.77173 17L0 8.36558L3.04162 5.37142L8.77173 11.0118L19.9584 0Z" fill="#0076C0"/>
+            </svg>
+    </div>
+ <div class="about-thumb">
         <h3 class="about-title">
     Data Security
         </h3>
         <p class="about-description">
           The Bank guarantees the safety of your personal data, ensuring their integrity and confidentiality.
         </p>
+ </div>
       </li>
 
     </ul>
@@ -52,6 +75,9 @@ export default {
   max-width: 664px;
   margin-right: 18px;
 }
+.about-item {
+ display: flex;
+}
 .about-item:not(:last-child) {
   margin-bottom: 15px;
 
@@ -65,8 +91,7 @@ font-size: 16px;
 line-height: 156.69%;
 
 
-display: flex;
-align-items: center;
+display: inline-block;
 margin-bottom: 10px;
 color: #333333;
 }
@@ -108,4 +133,13 @@ line-height: 156.69%;
   clip: rect(0 0 0 0);
   overflow: hidden;
 } 
+.features-icon {
+
+}
+.features-thumb {
+
+}
+.about-thumb {
+  margin-left: 15px;
+}
 </style>

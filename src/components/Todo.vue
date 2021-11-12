@@ -1,18 +1,21 @@
 <template>
-   <!-- <div :class="{ 'completed': todo.completed }">
-    <p @click="markComplete(todo)">{{ todo.title }}</p>
-    <button @click="$emit('delete-todo', todo.id)">Delete</button>
-  </div> -->
 
-   <div :class="{ 'completed': todo.completed }">
-              <input type="checkbox" @click="markComplete(todo)" >
+
+   <div class="todo-wrapper"  :class="{ 'completed': todo.completed }">
+     <label>
+       <input class="todo-check" type="checkbox" @click="markComplete(todo)" >
+      </label>
+              
               <label v-show="!todo.editable" 
-              :class="todo.completed ? 'taskitem' : 'text'">{{todo.title}}</label>
-           
+              :class="todo.completed ? 'taskitem' : 'text'">
+              {{todo.title}}
                 <input v-show="todo.editable"  :value="todo.title" type="text"   class="editor" @change="showTodoTitle($event)" />
+                </label>
+            <div class="todo-btnset">
               <button  type="edit" @click="editTodo(todo)" class="todo-edit">{{todo.editable? 'Edited': 'Edit'}}</button>
              <button @click="$emit('delete-todo', todo.id)" class="todo-delete">Delete</button>
             </div>
+   </div>
 
 </template>
 <script>
@@ -53,7 +56,7 @@ type: String,
 
     },
          editTodoed(todo) {
-         console.log(this.title, `done edit`)
+  
          
       todo.editable = false
     },
@@ -97,5 +100,17 @@ padding: 10px; */
 color: #FFFFFF;
 background: #0076C0;
 border: 1px solid #0076C0;
+width: 65px;
 }
+.todo-edit {
+  margin-right: 5px;
+}
+
+.todo-wrapper {
+  display: flex;
+ justify-content:space-between;
+}
+/* .todo-check {
+  width: 60px;
+} */
 </style>

@@ -1,11 +1,36 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link> 
+    <router-link class="invisible"  to="/todo">Todos</router-link>
   </div>
   <router-view/>
 </template>
+<script>
 
+
+
+export default {
+
+  name: 'App',
+   data() {
+    return {
+   
+      isActive: false,
+    
+    }
+  },
+  mounted: function () {
+  this.$nextTick(function () {
+let account_key = localStorage.getItem('isActive');
+console.log(account_key, `accaunt`)
+  })
+},
+  methods: {
+
+  }
+  
+}
+</script>
 <style>
 #nav {
   background: #333333;
@@ -339,5 +364,10 @@ Add the correct link without decoration
 
 a {
   text-decoration: none;
+}
+
+.invisible {
+  display: none;
+
 }
 </style>
