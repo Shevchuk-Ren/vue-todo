@@ -12,12 +12,8 @@
   <main class="todos-main">
     <div class="container container-todo">
       <div class="wrapper-todo">
-        <AddTodo @add-todo="addTodo" />
-        <Todos
-          :todos="todos"
-          @delete-todo="deleteTodo"
-          @new-obj="editTodo($event)"
-        />
+        <AddTodo />
+        <Todos :todos="todos" />
       </div>
     </div>
   </main>
@@ -37,38 +33,6 @@ export default {
 
   data() {
     return {
-      todos: [
-        {
-          id: 1,
-          title: 'Go workout',
-          completed: false,
-          editable: false,
-        },
-        {
-          id: 2,
-          title: 'Do laundry',
-          completed: false,
-          editable: false,
-        },
-        {
-          id: 3,
-          title: 'Cook food',
-          completed: false,
-          editable: false,
-        },
-        {
-          id: 4,
-          title: 'Clean up room',
-          completed: false,
-          editable: false,
-        },
-        {
-          id: 5,
-          title: 'Finish work',
-          completed: false,
-          editable: false,
-        },
-      ],
       contacts: [
         {
           login: 'Admin',
@@ -78,30 +42,15 @@ export default {
     };
   },
   methods: {
-    addTodo(newTodoObj) {
-      const checkTodo = this.todos.filter(
-        todo => todo.title === newTodoObj.title,
-      );
-
-      if (checkTodo.length !== 0) {
-        alert('This todo has been declareted');
-        return;
-      }
-
-      this.todos = [...this.todos, newTodoObj];
-    },
-    deleteTodo(todoId) {
-      this.todos = this.todos.filter(todo => todo.id !== todoId);
-    },
-    editTodo(newTodoObj) {
-      this.todos.filter(todo => {
-        if (todo.id === newTodoObj.id) {
-          todo.title = newTodoObj.title;
-          return todo;
-        }
-      });
-      this.todos = [...this.todos];
-    },
+    // editTodo(newTodoObj) {
+    //   this.todos.filter(todo => {
+    //     if (todo.id === newTodoObj.id) {
+    //       todo.title = newTodoObj.title;
+    //       return todo;
+    //     }
+    //   });
+    //   this.todos = [...this.todos];
+    // },
     checkLogin(newTodoObj) {
       const checkContact = this.contacts.filter(
         contact =>

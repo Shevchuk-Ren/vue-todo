@@ -8,22 +8,21 @@
       v-show="!todo.editable"
       :class="todo.completed ? 'taskitem' : 'text'"
     >
-      {{ todo.title }} </label>
-      <input
-        v-show="todo.editable"
-        :value="todo.title"
-        type="text"
-        class="editor"
-        @change="showTodoTitle($event)"
-      />
-   
+      {{ todo.title }}
+    </label>
+    <input
+      v-show="todo.editable"
+      :value="todo.title"
+      type="text"
+      class="editor"
+      @change="showTodoTitle($event)"
+    />
+
     <div class="todo-btnset">
       <button type="edit" class="todo-edit" @click="editTodo(todo)">
         {{ todo.editable ? 'Edited' : 'Edit' }}
       </button>
-      <button class="todo-delete" @click="$emit('delete-todo', todo.id)">
-        Delete
-      </button>
+      <button class="todo-delete" @click="removeTodo(todo.id)">Delete</button>
     </div>
   </div>
 </template>
@@ -45,7 +44,6 @@ export default {
 
   methods: {
     markComplete(todo) {
-   
       todo.completed = !todo.completed;
     },
     editTodo(todo) {
@@ -57,9 +55,7 @@ export default {
 
       todo.editable = true;
     },
-    editTodoed(todo) {
-      todo.editable = false;
-    },
+
     showTodoTitle(event) {
       const newTodoObj = {
         id: this.todo.id,
@@ -68,7 +64,10 @@ export default {
         editable: true,
       };
 
-      this.$emit('edit', newTodoObj);
+      this.$store.commit('editTodo', newTodoObj);
+    },
+    removeTodo(todoId) {
+      this.$store.commit('deleteTodo', todoId);
     },
   },
 };

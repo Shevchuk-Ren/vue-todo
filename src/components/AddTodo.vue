@@ -31,7 +31,9 @@ export default {
         completed: false,
         editable: false,
       };
-      this.$emit('add-todo', newTodoObj);
+
+      this.$store.commit('updateTodoList', newTodoObj);
+
       this.title = '';
     },
   },

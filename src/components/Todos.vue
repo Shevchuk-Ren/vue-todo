@@ -2,12 +2,8 @@
   <div>
     <h2>Thank you {name}!</h2>
     <ul class="todos-list">
-      <li v-for="todo in todos" :key="todo.id" class="todos-item">
-        <Todo
-          :todo="todo"
-          @edit="toggleHeader($event)"
-          @delete-todo="$emit('delete-todo', todo.id)"
-        />
+      <li v-for="todo in todoList" :key="todo.id" class="todos-item">
+        <Todo :todo="todo" />
       </li>
     </ul>
   </div>
@@ -20,43 +16,13 @@ export default {
   components: {
     Todo,
   },
-  props: {
-    todos: {
-      type: Array,
 
-      default: () => [],
-    },
-  },
-  emits: ['delete-todo', 'new-obj'],
-  methods: {
-    toggleHeader(newTodoObj) {
-      this.$emit('new-obj', newTodoObj);
+  computed: {
+    todoList() {
+      return this.$store.state.todoList;
     },
   },
 };
-
-// export default {
-//   name: 'Todos',
-//   components: {
-//     Todo
-//   },
-//     model: {
-//     prop: 'todos',
-
-//   },
-//   //  props: [
-//   //   "todos"
-//   // ],
-//     props: {
-//     // это позволит использовать входной параметр `value` в других целях
-//     value: Object,
-//     // теперь используем входной параметр `title` вместо `value`
-//     todos: {
-//       type: Object,
-
-//     }
-//   }
-// }
 </script>
 <style scoped>
 .todos-list {
