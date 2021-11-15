@@ -27,6 +27,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Todo',
 
@@ -35,21 +37,19 @@ export default {
       type: Object,
       default: () => {},
     },
-    todotitle: {
-      type: String,
-      default: 'Заголовок по умолчанию',
-    },
   },
-  emits: ['delete-todo', 'edit'],
+  // emits: ['delete-todo', 'edit'],
 
   methods: {
+    ...mapActions(['removeTodo']),
+
     markComplete(todo) {
       todo.completed = !todo.completed;
     },
+
     editTodo(todo) {
       if (todo.editable) {
         todo.editable = false;
-
         return;
       }
 
@@ -65,9 +65,6 @@ export default {
       };
 
       this.$store.commit('editTodo', newTodoObj);
-    },
-    removeTodo(todoId) {
-      this.$store.commit('deleteTodo', todoId);
     },
   },
 };

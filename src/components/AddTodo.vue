@@ -32,7 +32,7 @@ export default {
         editable: false,
       };
 
-      this.$store.commit('updateTodoList', newTodoObj);
+      this.$store.dispatch('createTodo', newTodoObj);
 
       this.title = '';
     },

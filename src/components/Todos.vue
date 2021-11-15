@@ -2,13 +2,14 @@
   <div>
     <h2>Thank you {name}!</h2>
     <ul class="todos-list">
-      <li v-for="todo in todoList" :key="todo.id" class="todos-item">
+      <li v-for="todo in GET" :key="todo.id" class="todos-item">
         <Todo :todo="todo" />
       </li>
     </ul>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import Todo from './Todo.vue';
 
 export default {
@@ -17,10 +18,13 @@ export default {
     Todo,
   },
 
+  // computed: {
+  //   todoList() {
+  //     return this.$store.getters.GET;
+  //   },
+  // },
   computed: {
-    todoList() {
-      return this.$store.state.todoList;
-    },
+    ...mapGetters(['GET']),
   },
 };
 </script>
