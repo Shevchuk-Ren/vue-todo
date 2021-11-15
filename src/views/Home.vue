@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     checkLogin(newLoginObj) {
-      // const checkContact = this.contacts.filter(contact => contact.login === newLoginObj.login && contact.password === newLoginObj.password)
+   
       const checkContact = this.contacts.filter(contact => {
         if (
           contact.login === newLoginObj.login &&
@@ -79,8 +79,7 @@ export default {
 .container {
   width: 100%;
   max-width: 1164px;
-  /* padding-left: 10px;
-    padding-right: 10px; */
+
   margin-left: auto;
   margin-right: auto;
 }
