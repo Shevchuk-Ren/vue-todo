@@ -27,7 +27,10 @@ export default {
   methods: {
            ...mapActions(['createTodo']),
     addTodo() {
-
+   if(this.title === '') {
+     return;
+   };
+   
   this.createTodo({
         id: uuidv4(),
         title: this.title,
