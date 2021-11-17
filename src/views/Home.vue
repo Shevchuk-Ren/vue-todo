@@ -2,6 +2,7 @@
   <div class="home">
     <AppBar />
     <main>
+
       <section class="hero">
         <Hero />
       </section>
@@ -10,10 +11,11 @@
         <div class="container">
           <div class="wrapper">
             <Features />
-            <Form></Form>
+            <Form/>
           </div>
         </div>
       </section>
+
     </main>
 
     <Footer />

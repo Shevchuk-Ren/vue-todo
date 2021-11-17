@@ -2,6 +2,7 @@
   <div id="nav">
     <router-link v-if="!checkAuth" to="/">Home</router-link>
     <router-link v-if="checkAuth" to="/todo">Todos</router-link>
+  
   </div>
   <router-view />
 </template>
