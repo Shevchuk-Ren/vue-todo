@@ -6,15 +6,13 @@
   <router-view />
 </template>
 <script>
-
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
-   computed: {
+  computed: {
     ...mapGetters(['checkAuth']),
   },
-
 };
 </script>
 <style>

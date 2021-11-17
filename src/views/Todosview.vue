@@ -12,7 +12,7 @@
   <main class="todos-main">
     <div class="container container-todo">
       <div class="wrapper-todo">
-        <AddTodo  />
+        <AddTodo />
         <Todos :msg="getUser" />
       </div>
     </div>
@@ -34,32 +34,6 @@ export default {
 
   computed: {
     ...mapGetters(['getUser']),
-
-  
-  },
-  methods: {
-    // editTodo(newTodoObj) {
-    //   this.todos.filter(todo => {
-    //     if (todo.id === newTodoObj.id) {
-    //       todo.title = newTodoObj.title;
-    //       return todo;
-    //     }
-    //   });
-    //   this.todos = [...this.todos];
-    // },
-    // checkLogin(newTodoObj) {
-    //   const checkContact = this.contacts.filter(
-    //     contact =>
-    //       contact.login === newTodoObj.login &&
-    //       contact.password === newTodoObj.password,
-    //   );
-
-    //   if (checkContact.length !== 0) {
-    //     alert(`Hello, ${newTodoObj.login}`);
-    //     return;
-    //   }
-    //   alert(`Try again`);
-    // },
   },
 };
 </script>

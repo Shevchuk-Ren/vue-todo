@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper-form">
-
     <form class="form" autoComplete="off" @submit.prevent="submitForm">
-
       <label for="name" class="form-label">Name</label>
       <input
         id="name"
@@ -27,7 +25,6 @@
 
       <button class="form-btn" type="submit">LOGIN</button>
       <a class="form-repeat" href="">Forgot Password</a>
-
     </form>
     <div class="form-register">
       <a class="form-text" href="">Register now</a>
@@ -35,7 +32,6 @@
   </div>
 </template>
 <script>
-
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
@@ -50,24 +46,22 @@ export default {
       isName: false,
     };
   },
- computed: {
+  computed: {
     ...mapGetters(['checkAuth']),
   },
   methods: {
-     ...mapMutations(['checkUser']),
+    ...mapMutations(['checkUser']),
 
     submitForm() {
+      this.checkUser({ name: this.login, password: this.password });
 
-      this.checkUser({name: this.login, password: this.password});
-      console.log(this.$store.getters.checkAuth, `active`)
-      if(this.checkAuth) {
-       alert(`Hello, ${this.login}`);
+      if (this.checkAuth) {
+        alert(`Hello, ${this.login}`);
         this.$router.push('/todo');
-     
       } else {
-          alert(`Try again`);
+        alert(`Try again`);
       }
-         
+
       this.login = '';
       this.password = '';
     },
@@ -112,7 +106,6 @@ export default {
   margin-top: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
- 
 }
 .form-input:hover {
   border: 1px solid #0076c0;

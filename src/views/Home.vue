@@ -21,13 +21,11 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import AppBar from '../components/AppBar.vue';
 import Hero from '../components/Hero.vue';
 import Form from '@/components/Form.vue';
 import Features from '../components/Features.vue';
 import Footer from '../components/Footer.vue';
-
 
 export default {
   name: 'Home',
@@ -38,7 +36,6 @@ export default {
     Form,
     Footer,
   },
-
 };
 </script>
 <style>

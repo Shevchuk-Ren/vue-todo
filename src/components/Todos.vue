@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Thank you {{msg}}!</h2>
+    <h2>Thank you {{ msg }}!</h2>
     <ul class="todos-list">
       <li v-for="todo in GET" :key="todo.id" class="todos-item">
         <Todo :todo="todo" />
@@ -17,15 +17,12 @@ export default {
   components: {
     Todo,
   },
- props: {
-   msg: {
+  props: {
+    msg: {
       type: String,
       default: 'name',
-
-    }
- 
- },
-  
+    },
+  },
 
   computed: {
     ...mapGetters(['GET']),

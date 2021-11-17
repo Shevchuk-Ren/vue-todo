@@ -14,7 +14,7 @@
 </template>
 <script>
 import { v4 as uuidv4 } from 'uuid';
-import { mapActions } from 'vuex'
+import { mapActions } from 'vuex';
 
 export default {
   name: 'AddTodo',
@@ -25,19 +25,19 @@ export default {
     };
   },
   methods: {
-           ...mapActions(['createTodo']),
+    ...mapActions(['createTodo']),
     addTodo() {
-   if(this.title === '') {
-     return;
-   };
-   
-  this.createTodo({
+      if (this.title === '') {
+        return;
+      }
+
+      this.createTodo({
         id: uuidv4(),
         title: this.title,
         completed: false,
         editable: false,
       });
-      
+
       this.title = '';
     },
   },
