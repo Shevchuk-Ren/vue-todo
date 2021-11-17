@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper-form">
+
     <form class="form" autoComplete="off" @submit.prevent="submitForm">
+
       <label for="name" class="form-label">Name</label>
       <input
         id="name"
@@ -25,7 +27,7 @@
 
       <button class="form-btn" type="submit">LOGIN</button>
       <a class="form-repeat" href="">Forgot Password</a>
-      <!-- <div class="invisible"  :class="isPassword && 'todo-error'" >Я тут</div> -->
+
     </form>
     <div class="form-register">
       <a class="form-text" href="">Register now</a>
@@ -33,6 +35,9 @@
   </div>
 </template>
 <script>
+
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   name: 'Form',
   emits: ['check-login'],
@@ -40,30 +45,29 @@ export default {
     return {
       password: '',
       login: '',
-      isActive: false,
       width: '40px',
       isPassword: false,
       isName: false,
     };
   },
-
+ computed: {
+    ...mapGetters(['checkAuth']),
+  },
   methods: {
+     ...mapMutations(['checkUser']),
+
     submitForm() {
-      if (this.password === '') {
-        this.isPassword = true;
 
-        return;
-      } else if (this.login === '') {
-        this.isName = true;
-        return;
+      this.checkUser({name: this.login, password: this.password});
+      console.log(this.$store.getters.checkAuth, `active`)
+      if(this.checkAuth) {
+       alert(`Hello, ${this.login}`);
+        this.$router.push('/todo');
+     
+      } else {
+          alert(`Try again`);
       }
-
-      const newTodoObj = {
-        password: this.password,
-        login: this.login,
-        isActive: this.isActive,
-      };
-      this.$emit('check-login', newTodoObj);
+         
       this.login = '';
       this.password = '';
     },
@@ -108,7 +112,7 @@ export default {
   margin-top: 4px;
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
-  /* transition: border $timing-fm; */
+ 
 }
 .form-input:hover {
   border: 1px solid #0076c0;

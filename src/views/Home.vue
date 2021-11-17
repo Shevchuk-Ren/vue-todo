@@ -10,7 +10,7 @@
         <div class="container">
           <div class="wrapper">
             <Features />
-            <Form @check-login="checkLogin"></Form>
+            <Form></Form>
           </div>
         </div>
       </section>
@@ -28,6 +28,7 @@ import Form from '@/components/Form.vue';
 import Features from '../components/Features.vue';
 import Footer from '../components/Footer.vue';
 
+
 export default {
   name: 'Home',
   components: {
@@ -37,42 +38,7 @@ export default {
     Form,
     Footer,
   },
-  data() {
-    return {
-      contacts: [
-        {
-          login: 'Admin',
-          password: '12345',
-          isActive: false,
-        },
-      ],
-    };
-  },
-  methods: {
-    checkLogin(newLoginObj) {
-   
-      const checkContact = this.contacts.filter(contact => {
-        if (
-          contact.login === newLoginObj.login &&
-          contact.password === newLoginObj.password
-        ) {
-          contact.isActive = true;
 
-          localStorage.setItem('isActive', contact.isActive);
-
-          return contact;
-        }
-      });
-
-      if (checkContact.length !== 0) {
-        alert(`Hello, ${newLoginObj.login}`);
-        this.$router.push('/todo');
-        console.log(this.contacts, `Контакты`);
-        return;
-      }
-      alert(`Try again`);
-    },
-  },
 };
 </script>
 <style>

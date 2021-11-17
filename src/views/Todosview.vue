@@ -12,8 +12,8 @@
   <main class="todos-main">
     <div class="container container-todo">
       <div class="wrapper-todo">
-        <AddTodo />
-        <Todos :todos="todos" />
+        <AddTodo  />
+        <Todos :msg="getUser" />
       </div>
     </div>
   </main>
@@ -23,6 +23,7 @@
 <script>
 import AddTodo from '../components/AddTodo';
 import Todos from '../components/Todos.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
@@ -31,15 +32,10 @@ export default {
     AddTodo,
   },
 
-  data() {
-    return {
-      contacts: [
-        {
-          login: 'Admin',
-          password: '12345',
-        },
-      ],
-    };
+  computed: {
+    ...mapGetters(['getUser']),
+
+  
   },
   methods: {
     // editTodo(newTodoObj) {
@@ -51,19 +47,19 @@ export default {
     //   });
     //   this.todos = [...this.todos];
     // },
-    checkLogin(newTodoObj) {
-      const checkContact = this.contacts.filter(
-        contact =>
-          contact.login === newTodoObj.login &&
-          contact.password === newTodoObj.password,
-      );
+    // checkLogin(newTodoObj) {
+    //   const checkContact = this.contacts.filter(
+    //     contact =>
+    //       contact.login === newTodoObj.login &&
+    //       contact.password === newTodoObj.password,
+    //   );
 
-      if (checkContact.length !== 0) {
-        alert(`Hello, ${newTodoObj.login}`);
-        return;
-      }
-      alert(`Try again`);
-    },
+    //   if (checkContact.length !== 0) {
+    //     alert(`Hello, ${newTodoObj.login}`);
+    //     return;
+    //   }
+    //   alert(`Try again`);
+    // },
   },
 };
 </script>

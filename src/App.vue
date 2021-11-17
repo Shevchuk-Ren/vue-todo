@@ -1,42 +1,20 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>
-    <router-link v-if="isActive" to="/todo">Todos</router-link>
+    <router-link v-if="!checkAuth" to="/">Home</router-link>
+    <router-link v-if="checkAuth" to="/todo">Todos</router-link>
   </div>
   <router-view />
 </template>
 <script>
+
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      isActive: false,
-    };
+   computed: {
+    ...mapGetters(['checkAuth']),
   },
-  mounted() {
-    this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been rendered
-      const isLogin = localStorage.getItem('isActive');
-      if (isLogin) console.log(localStorage.getItem('isActive'), `Hello World`);
-      this.isActive = isLogin;
-    });
-  },
-  updated() {
-    this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been re-rendered
-      console.log(this.$store.state, `store`);
-      const isLogin = localStorage.getItem('isActive');
-      if (isLogin) console.log(localStorage.getItem('isActive'), `Hello World`);
-      this.isActive = isLogin;
-    });
-  },
-  methods: {
-    chekLogin() {
-      this.isActive = localStorage.getItem('isActive');
-    },
-  },
+
 };
 </script>
 <style>
