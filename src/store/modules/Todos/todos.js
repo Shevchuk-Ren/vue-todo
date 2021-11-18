@@ -95,13 +95,21 @@ export default {
     DELETE_TODO(state, todoId) {
       state.todoList = state.todoList.filter(todo => todo.id !== todoId);
     },
-    editTodo(state, newTodoObj) {
+    EDIT_TODO(state, newTodoObj) {
       state.todoList.filter(todo => {
         if (todo.id === newTodoObj.id) {
           todo.title = newTodoObj.title;
-          // return todo;
+     
         }
       });
     },
+    toggleEditable(state, currentTodo) {
+      state.todoList.find(todo => {
+        if (todo.id === currentTodo.id) {
+          todo.editable = todo.editable?false: true;
+        
+        };
+})
+    }
   },
 };

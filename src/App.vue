@@ -1,8 +1,9 @@
 <template>
   <div id="nav">
+    <div class="container">
     <router-link v-if="!checkAuth" to="/">Home</router-link>
     <router-link v-if="checkAuth" to="/todo">Todos</router-link>
-  
+  </div>
   </div>
   <router-view />
 </template>

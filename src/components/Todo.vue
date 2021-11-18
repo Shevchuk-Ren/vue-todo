@@ -1,17 +1,19 @@
 <template>
   <div class="todo-wrapper" :class="{ completed: todo.completed }">
-    <label>
+    <label class="todo-input">
       <input class="todo-check" type="checkbox" @click="markComplete(todo)" />
     </label>
 
     <label
       v-show="!todo.editable"
       :class="todo.completed ? 'taskitem' : 'text'"
+    for="edit"
     >
       {{ todo.title }}
     </label>
     <input
       v-show="todo.editable"
+      id="edit"
       :value="todo.title"
       type="text"
       class="editor"
@@ -19,7 +21,7 @@
     />
 
     <div class="todo-btnset">
-      <button type="edit" class="todo-edit" @click="editTodo(todo)">
+      <button type="edit" class="todo-edit" @click="toggleTodo(todo)">
         {{ todo.editable ? 'Edited' : 'Edit' }}
       </button>
       <button class="todo-delete" @click="removeTodo(todo.id)">Delete</button>
@@ -27,7 +29,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'Todo',
@@ -38,33 +40,26 @@ export default {
       default: () => {},
     },
   },
-  // emits: ['delete-todo', 'edit'],
 
   methods: {
     ...mapActions(['removeTodo']),
+    ...mapMutations(['EDIT_TODO','toggleEditable']),
 
     markComplete(todo) {
       todo.completed = !todo.completed;
     },
 
-    editTodo(todo) {
-      if (todo.editable) {
-        todo.editable = false;
-        return;
-      }
-
-      todo.editable = true;
+    toggleTodo(todo) {
+this.toggleEditable(todo)
     },
 
     showTodoTitle(event) {
       const newTodoObj = {
         id: this.todo.id,
         title: event.target.value,
-        completed: false,
-        editable: true,
       };
 
-      this.$store.commit('editTodo', newTodoObj);
+      this.EDIT_TODO(newTodoObj);
     },
   },
 };
@@ -84,27 +79,43 @@ export default {
 }
 .todo-delete,
 .todo-edit {
-  /* 
-font-style: normal;
+
+/* font-style: normal;
 font-weight: normal;
 font-size: 25px;
-line-height: 29px;
-padding: 10px; */
+line-height: 29px; */
+ padding: 4px; 
 
   color: #ffffff;
   background: #0076c0;
   border: 1px solid #0076c0;
   width: 65px;
+ 
 }
 .todo-edit {
+
   margin-right: 5px;
+  outline: none;
+  border: 1px solid #0076c0;
+  border-radius: 4px;
+  text-align: justify;
 }
 
 .todo-wrapper {
   display: flex;
   justify-content: space-between;
+align-items: center;
 }
-/* .todo-check {
-  width: 60px;
-} */
+
+.editor {
+  width: 100%;
+}
+.todo-btnset {
+  margin-left: 5px;
+  min-width: 135px;
+}
+
+.todo-input {
+  margin-right: 5px;
+}
 </style>
