@@ -109,7 +109,16 @@ export default {
           todo.editable = todo.editable?false: true;
         
         };
+        
 })
-    }
+    },
+        toggleComplited(state, currentTodo) {
+      state.todoList.find(todo => {
+        if (todo.id === currentTodo.id) {
+          todo.completed = todo.completed?false: true;
+        
+        };
+        })
+    },
   },
 };

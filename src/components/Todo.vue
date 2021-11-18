@@ -43,10 +43,10 @@ export default {
 
   methods: {
     ...mapActions(['removeTodo']),
-    ...mapMutations(['EDIT_TODO','toggleEditable']),
+    ...mapMutations(['EDIT_TODO','toggleEditable', 'toggleComplited']),
 
     markComplete(todo) {
-      todo.completed = !todo.completed;
+      this.toggleComplited(todo)
     },
 
     toggleTodo(todo) {
